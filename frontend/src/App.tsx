@@ -12,10 +12,11 @@ export default function App() {
   useEffect(() => { void refresh() }, [])
   async function addPatient(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError('')
-    const data = Object.fromEntries(new FormData(event.currentTarget))
+    const form = event.currentTarget
+    const data = Object.fromEntries(new FormData(form))
     const response = await fetch(`${API}/api/patients`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
     if (!response.ok) { setError('Could not save this patient. Check the fields and try again.'); return }
-    event.currentTarget.reset(); void refresh()
+    form.reset(); void refresh()
   }
   async function ask(event: React.FormEvent) {
     event.preventDefault()

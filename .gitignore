@@ -4,6 +4,8 @@ __pycache__/
 .pytest_cache/
 node_modules/
 dist/
+frontend/test-results/
+frontend/playwright-report/
 .terraform/
 *.tfstate*
 *.py[cod]
